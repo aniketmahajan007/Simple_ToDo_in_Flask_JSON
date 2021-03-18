@@ -1,6 +1,6 @@
 let add = ()=>{
    let task = document.getElementById("todo_write").value;
-   fetch('http://127.0.0.1:5000/add',{
+   fetch('https://flasktodo-aniket.herokuapp.com/add',{
       method: 'POST',
       headers: {
       'Accept': 'application/json',
@@ -28,7 +28,7 @@ Array.from(document.getElementsByClassName("remove_task")).forEach((element) => 
    element.addEventListener('click',()=>{
       const id = element.getAttribute("id").match(/\d+/)[0];
       if(confirm("Do you want to remove this tasks")){
-         fetch('http://127.0.0.1:5000/remove/'+id,{
+         fetch('https://flasktodo-aniket.herokuapp.com/remove/'+id,{
                method: 'DELETE',
                headers: {
                'Accept': 'application/json',
@@ -55,7 +55,7 @@ Array.from(document.getElementsByClassName("items_checkbox")).forEach((element)=
          const id = element.getAttribute("id").match(/\d+/)[0];
          if(!element.checked){
             if(confirm("Do you want to uncheck this Task")){
-               fetch('http://127.0.0.1:5000/unchecked/'+id,{
+               fetch('https://flasktodo-aniket.herokuapp.com/unchecked/'+id,{
                   method: 'PUT',
                   headers: {
                   'Accept': 'application/json',
@@ -76,7 +76,7 @@ Array.from(document.getElementsByClassName("items_checkbox")).forEach((element)=
             }
          }else{
             if(confirm("Do you want to checklist this Task")){
-               fetch('http://127.0.0.1:5000/checked/'+id,{
+               fetch('https://flasktodo-aniket.herokuapp.com/checked/'+id,{
                   method: 'PUT',
                   headers: {
                   'Accept': 'application/json',
@@ -100,7 +100,7 @@ Array.from(document.getElementsByClassName("items_checkbox")).forEach((element)=
 });
 document.getElementById("clear_all_task").addEventListener('click',()=>{
    if(confirm('Are you sure you want to remove all task?')){
-      fetch('http://127.0.0.1:5000/clear',{
+      fetch('https://flasktodo-aniket.herokuapp.com/clear',{
                   method: 'DELETE',
                   headers: {
                   'Accept': 'application/json',
