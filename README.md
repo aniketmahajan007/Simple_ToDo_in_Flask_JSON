@@ -4,3 +4,5 @@ Tech Used - Flask , Vanilla Javascript, CSS, HTML, Python3
 
 
 Database - JSON to store tasked
+
+Live Preview - https://flasktodo-aniket.herokuapp.com/
