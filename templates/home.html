@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <link type= "text/css" href="{{ url_for('static',filename='css/home.css') }}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+</head>
+<body>
+<br>
+    <h2 class="text-center">To-Do List - Flask</h2>
+    <div class="page-content page-container" id="page-content">
+        <div class="padding">
+            <div class="row container d-flex justify-content-center">
+                <div class="col-md-12">
+                    <div class="card px-3">
+                        <div class="card-body">
+                            <h4 class="card-title">Awesome Todo list</h4>
+                            <div class="add-items d-flex"> <input id="todo_write" type="text" class="form-control todo-list-input" placeholder="What do you need to do today?"> <button id="add_in_list" class="add btn btn-primary font-weight-bold todo-list-add-btn">Add</button> </div>
+                            <div class="list-wrapper">
+                                <ul class="d-flex flex-column-reverse todo-list" id="all_tasked">
+                                    {% for tasked in task %}
+                                         {% if tasked["status"] == 0 %}
+                                             <li>
+                                             <div class="form-check">
+                                                <label class="form-check-label">
+                                                    <input id="item{{ tasked["id"] }}" class="checkbox items_checkbox" type="checkbox">
+                                         {% else %}
+                                            <li class="completed">
+                                             <div class="form-check">
+                                                <label class="form-check-label">
+                                                    <input id="item{{ tasked["id"] }}" class="checkbox items_checkbox" type="checkbox" checked>
+                                         {% endif %}
+                                            {{ tasked["tasked"] }}
+                                                    <i class="input-helper"></i>
+                                                </label>
+                                            </div>
+                                            <i id="remove{{ tasked["id"] }}" class="remove remove_task mdi mdi-close-circle-outline"></i>
+                                        </li>
+                                    {%  endfor %}
+                                </ul>
+                            </div>
+                        <br>
+                        <button id="clear_all_task" class="text-center btn btn-danger">Clear All</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static',filename='script/home.js') }}"></script>
+</body>
+</html>
